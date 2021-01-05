@@ -152,9 +152,11 @@ LIMIT is limit."
         (when (string-match "\\(\\\\includegraphics\\(:?\\[.*?\\]\\)?{.*?}\\)" f)
           (setq f (match-string 1 f))
           (insert (format "\\begin{subfigure}[%s]{%s}
+\\centering
 %s
 \\caption{%s}
-\\end{subfigure}\n" align width f c))
+\\end{subfigure}
+\\hfill\n" align width f c))
           (when (and (> limit 0)
                      (< i (1- (length fig)))
                      (= (mod (1+ i) limit) 0))
